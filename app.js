@@ -1,5 +1,7 @@
 var express = require('express');
 //Executando a funcao que o modulo express retorna
+
+var msg = require('./mod_test');
 var app= express();
 
 //Ajustando a view engine do express
@@ -20,5 +22,6 @@ app.get('/noticias',function(req,res){
 
 app.listen(3000,function(){
 	console.log("Servidor rodando com express");
+	console.log(msg());
 
 });
