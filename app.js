@@ -1,27 +1,15 @@
-var express = require('express');
-//Executando a funcao que o modulo express retorna
+app = require('./config/server');
 
-var msg = require('./mod_test');
-var app= express();
+var home = require('./app/routes/home')(app);
 
-//Ajustando a view engine do express
-app.set('view engine','ejs');
+var portalNoticias = require('./app/routes/noticias')(app);
 
-app.get('/',function(req,res){
+var form = require('./app/routes/formulario_inclusao_noticia')(app);
 
-	res.render("home/index");
-});
 
-app.get('/formulario_inclusao_noticia',function(req,res){
-	res.render("admin/form_add_noticia");
-});
-
-app.get('/noticias',function(req,res){
-	res.render("noticias/noticias");
-});
 
 app.listen(3000,function(){
 	console.log("Servidor rodando com express");
-	console.log(msg());
+
 
 });
